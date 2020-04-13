@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
+### Runs server for the app (On port 8080)
+```
+npm run serve
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
