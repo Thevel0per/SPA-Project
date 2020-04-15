@@ -39,6 +39,11 @@ export default {
         }
       ]
     };
+  },
+  mounted: function() {
+    this.$root.db.flashcardsSets.getAllSets(u => {
+      this.flashcardSets = u;
+    });
   }
 };
 </script>
