@@ -18,7 +18,13 @@
         <div class="row justify-content-md-center">
           <div class="col-md-1">
             <li class="nav-item active">
-              <router-link class="nav-link" to="/flashcard_sets" v-if="!loggedIn">Flashcards</router-link>
+              <router-link
+                class="nav-link"
+                to="/flashcard_sets"
+                v-if="!loggedIn"
+              >
+                Flashcards
+              </router-link>
             </li>
           </div>
           <div class="col-md-1">
@@ -31,22 +37,43 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >My account</a>
+              >
+                My account
+              </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <router-link class="dropdown-item" to="/login" v-if="!loggedIn">Login</router-link>
-                <router-link class="dropdown-item" to="/register" v-if="!loggedIn">Register</router-link>
-                <router-link class="item" to="/register" v-if="loggedIn">My Account</router-link>
+                <router-link class="dropdown-item" to="/login" v-if="!loggedIn">
+                  Login
+                </router-link>
+                <router-link
+                  class="dropdown-item"
+                  to="/register"
+                  v-if="!loggedIn"
+                >
+                  Register
+                </router-link>
+                <router-link class="item" to="/register" v-if="loggedIn">
+                  My Account
+                </router-link>
 
                 <div class="dropdown-divider" v-if="loggedIn"></div>
-                <router-link class="item right" to="/logout" v-if="loggedIn">Log out</router-link>
+                <router-link class="item right" to="/logout" v-if="loggedIn">
+                  Log out
+                </router-link>
               </div>
             </li>
           </div>
         </div>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
       </form>
     </div>
   </nav>

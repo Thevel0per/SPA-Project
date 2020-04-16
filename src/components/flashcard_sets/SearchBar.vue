@@ -7,7 +7,9 @@
         placeholder="Search"
         aria-label="Search"
       />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
     </form>
   </div>
 </template>
@@ -17,14 +19,3 @@ export default {
   name: "SearchBar"
 };
 </script>
-
-<style>
-.search {
-  width: 100%;
-  text-align: center;
-}
-
-.search .input {
-  width: 75%;
-}
-</style>

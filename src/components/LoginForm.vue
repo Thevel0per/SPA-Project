@@ -5,7 +5,9 @@
         <div class="card bg-dark text-center responsive-form w-50 mx-auto">
           <form class="card-body text-light">
             <div class="form-group row">
-              <label for="username" class="col-sm-12 col-md-4 col-form-label">Username</label>
+              <label for="username" class="col-sm-12 col-md-4 col-form-label">
+                Username
+              </label>
               <div class="col-sm-12 col-md-8">
                 <input
                   name="username"
@@ -18,7 +20,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="password" class="col-sm-12 col-md-4 col-form-label">Password</label>
+              <label for="password" class="col-sm-12 col-md-4 col-form-label">
+                Password
+              </label>
               <div class="col-sm-12 col-md-8">
                 <input
                   name="password"
@@ -31,15 +35,21 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-12">
-                <button type="submit" class="btn btn-outline-success w-25">Login</button>
+                <button type="submit" class="btn btn-outline-success w-25">
+                  Login
+                </button>
               </div>
             </div>
           </form>
           <div class="login-form-link">
-            <router-link to="/register">You don't have an account yet? Register Now!</router-link>
+            <router-link to="/register">
+              You don't have an account yet? Register Now!
+            </router-link>
           </div>
           <div class="login-form-link">
-            <router-link to="/register">Forgot your password? Let us get this sorted for you!</router-link>
+            <router-link to="/register">
+              Forgot your password? Let us get this sorted for you!
+            </router-link>
           </div>
         </div>
       </div>
@@ -52,4 +62,3 @@ export default {
   name: "LoginForm"
 };
 </script>
-
