@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="h-100">
     <HeaderMenu :loggedIn="loggedIn" />
     <router-view></router-view>
   </div>

@@ -1,19 +1,17 @@
 <template>
-  <div class="ui middle aligned grid">
-    <div class="flashcard-sets row">
-      <div class="four wide column">
-        <div class="row">dupa</div>
-      </div>
-      <div class="eight wide column">
-        <div class="row">
-          <SearchBar />
-        </div>
-        <div class="row" v-for="(set, index) in flashcardSets" :key="index">
-          <FlashcardSetCard :flashcardSet="set" />
-        </div>
-      </div>
-      <div class="four wide column"></div>
+  <div class="row flashcards-sets-content">
+    <div class="col-md-3">
+      <div class="row">dupa</div>
     </div>
+    <div class="col-md-6">
+      <div class="row">
+        <SearchBar />
+      </div>
+      <div class="row" v-for="(set, index) in flashcardSets" :key="index">
+        <FlashcardSetCard :flashcardSet="set" />
+      </div>
+    </div>
+    <div class="col-md3"></div>
   </div>
 </template>
 
@@ -29,15 +27,7 @@ export default {
   },
   data() {
     return {
-      flashcardSets: [
-        {
-          name: "Germanski - Muzyka",
-          user: {
-            id: 1,
-            username: "User-1"
-          }
-        }
-      ]
+      flashcardSets: []
     };
   },
   mounted: function() {
@@ -48,17 +38,3 @@ export default {
 };
 </script>
 
-<style>
-.grid .flashcard-sets {
-  margin-top: 2%;
-}
-
-.flashcard-set {
-  border-radius: 5px;
-  width: 70%;
-  justify-content: center;
-  margin: 50px auto;
-  height: 40px;
-  background-color: rgb(232, 234, 246);
-}
-</style>

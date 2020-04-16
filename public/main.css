@@ -1,0 +1,30 @@
+@media screen and (max-width: 750px) {
+  div.responsive-form {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  div.responsive-form {
+    width: 75% !important;
+  }
+}
+
+.responsive-form {
+  padding: 40px 0;
+}
+
+.login-form-link {
+  margin-bottom: 10px;
+}
+
+.flashcards-sets-content {
+  margin-top: 2%;
+}
+
+.flashcard-set {
+  border-radius: 5px;
+  width: 70%;
+  justify-content: center;
+  margin: 2% auto;
+}

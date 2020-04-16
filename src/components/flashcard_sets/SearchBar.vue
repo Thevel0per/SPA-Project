@@ -1,10 +1,14 @@
 <template>
-  <div class="ui search">
-    <div class="ui icon input">
-      <input class="prompt" type="text" placeholder="Search for flashcard sets..." />
-      <i class="search icon"></i>
-    </div>
-    <div class="results"></div>
+  <div class="col-md-9 mx-auto">
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control w-75 mx-auto"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 </template>
 
@@ -15,12 +19,12 @@ export default {
 </script>
 
 <style>
-.ui.search {
+.search {
   width: 100%;
   text-align: center;
 }
 
-.ui.search .input {
+.search .input {
   width: 75%;
 }
 </style>
