@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Total Fishks</a>
+    <router-link class="navbar-brand" to="/">Total Fishks</router-link>
     <button
       class="navbar-toggler"
       type="button"
