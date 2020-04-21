@@ -1,7 +1,15 @@
 <template>
   <div class="row flashcards-sets-content">
     <div class="col-md-3">
-      <SetsFilters />
+      <nav class="side-menu h-100">
+        <div class="row h-100">
+          <div
+            class="col-md-6 offset-md-1 my-auto card bg-light text-light h-25"
+          >
+            <div class="row card bg-dark my-auto">DUpa</div>
+          </div>
+        </div>
+      </nav>
     </div>
     <div class="col-md-6">
       <div class="row">
@@ -17,14 +25,12 @@
 <script>
 import SearchBar from "../shared/SearchBar.vue";
 import FlashcardSetCard from "../shared/FlashcardSetCard.vue";
-import SetsFilters from "./SetsFilters.vue";
 
 export default {
-  name: "FlashcardSets",
+  name: "UserPanel",
   components: {
     SearchBar,
-    FlashcardSetCard,
-    SetsFilters
+    FlashcardSetCard
   },
   data() {
     return {
@@ -38,3 +44,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+nav .row {
+  margin: 0 !important;
+}
+</style>

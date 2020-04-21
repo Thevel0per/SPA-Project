@@ -1,5 +1,5 @@
 <template>
-  <div class="container justify-content-md-center h-100">
+  <div class="container h-100">
     <div class="row h-100">
       <div class="col-md-12 my-auto">
         <div class="card bg-dark text-center responsive-form w-50 mx-auto">
