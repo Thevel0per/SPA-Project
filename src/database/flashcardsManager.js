@@ -9,7 +9,10 @@ var flashcardsManager = {
       .then(snapshot => {
         let flashcards = [];
         snapshot.forEach(doc => {
-          flashcards.push(doc.data());
+          let element = [];
+          element.push(doc.data());
+          element.push(doc.id);
+          flashcards.push(element);
         });
         callback(flashcards);
       });
