@@ -10,6 +10,14 @@
       <div class="row" v-for="(set, index) in flashcardSets" :key="index">
         <FlashcardSetCard :flashcardSet="set" />
       </div>
+      <div class="row">
+        <router-link
+          to="/flashcard_sets/new"
+          class="mx-auto btn btn-outline-success w-50"
+        >
+          New Set
+        </router-link>
+      </div>
     </div>
   </div>
 </template>

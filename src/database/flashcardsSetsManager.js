@@ -1,9 +1,10 @@
 import db from "./db";
 
+const collectionName = "flashcards_sets";
 var flashcardsSetsManager = {
   getAllSets: callback => {
     db()
-      .collection("flashcards_sets")
+      .collection(collectionName)
       .get()
       .then(snapshot => {
         let sets = [];
@@ -16,6 +17,16 @@ var flashcardsSetsManager = {
           sets.push(set);
         });
         callback(sets);
+      });
+  },
+  createSet: (setName, callback) => {
+    db()
+      .collection(collectionName)
+      .add({
+        name: setName
+      })
+      .then(() => {
+        callback();
       });
   }
 };
