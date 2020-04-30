@@ -5,18 +5,24 @@
         <div class="flashcard-set card bg-dark">
             <div class="card-body text-light">
                 <div class="row justify-content-center">
-                  {{ $route.params.setname }}
+                  {{ setname }}
                 </div><br>
                 <div class="row justify-content-center">
-                  <button class="btn btn-outline-success" @click="changeEdit()">
-                    Edit
+                  <button>
+                    <i class="fas fa-2x fa-book-reader"></i>
+                  </button>
+                  <button>
+                    <i class="fas fa-2x fa-graduation-cap"></i>
+                  </button>
+                  <button @click="changeEdit()">
+                    <i class="far fa-2x fa-edit"></i>
                   </button>
                 </div>
             </div>
         </div>
         </div>
         <div class="row" v-for="(card, index) in flashcards" :key="index">
-        <flashcard :flashcard="card" :edit="edit" :reload="reload" />
+        <flashcard v-on:deleteflashcard="deleteEvent()" :flashcard="card" :edit="edit" />
         </div>
         <div class="row" v-if="edit">
           <div class="flashcard-set card bg-dark">
@@ -38,8 +44,8 @@
                 />  
               </div><br>
               <div class="row justify-content-center">
-                <button type="submit" class="btn btn-outline-success" @click="addFlashcard()">
-                  Add
+                <button @click="addFlashcard()">
+                  <i class="fas fa-2x fa-plus"></i>
                 </button>
               </div>
             </div>
@@ -64,26 +70,49 @@ export default {
       word: '',
       translated_word: '',
       edit: false,
-      reload: false
+      setname: ''
     };
   },
   methods:{
     addFlashcard(){
-      console.log(this.$route.params.ref.id);
-      this.$root.db.flashcard.setNewFlashcard(this.$route.params.ref, this.word, this.translated_word);
-      this.$root.db.flashcards.getFlashcardsForSet(this.$route.params.ref ,u => {
-      this.flashcards = u;
-    });
+      this.$root.db.flashcards.getSetById(this.$route.params.id ,set => {   
+        this.$root.db.flashcard.setNewFlashcard(set.ref, this.word, this.translated_word); 
+        this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
+          this.flashcards = i;
+        });
+      });
     },
     changeEdit(){
       if(this.edit == false) this.edit = true;
       else this.edit = false;
+    },
+    deleteEvent(){
+      this.$root.db.flashcards.getSetById(this.$route.params.id ,set => {   
+        this.setname = set.data().name; 
+        this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
+          this.flashcards = i;
+        });
+      });
     }
   },
   mounted: function() {
-    this.$root.db.flashcards.getFlashcardsForSet(this.$route.params.ref ,u => {
-      this.flashcards = u;
+    this.$root.db.flashcards.getSetById(this.$route.params.id ,set => {   
+      this.setname = set.data().name; 
+      this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
+        this.flashcards = i;
+      });
     });
   }
 };
 </script>
+
+<style scoped>
+button,
+a {
+  background: none;
+  color: white;
+  border: none;
+  margin: 0 5px;
+  width: 50px;
+}
+</style>

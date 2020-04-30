@@ -6,8 +6,8 @@
           <div v-if="edit"> 
             <br>
             <div class="row justify-content-center">
-              <button class="btn btn-outline-success" @click="deleteFlashcard()">
-                Delete
+              <button @click="deleteFlashcard()">
+                <i class="far fa-2x fa-trash-alt"></i>
               </button>
             </div>
           </div>
@@ -24,9 +24,20 @@ export default {
   },
     methods:{
     deleteFlashcard(){
-      console.log("aaa");
+      this.$emit("deleteflashcard");
       this.$root.db.flashcard.deleteFlashcard(this.flashcard[1]);
     }
   }
 };
 </script>
+
+<style scoped>
+button,
+a {
+  background: none;
+  color: white;
+  border: none;
+  margin: 0 5px;
+  width: 50px;
+}
+</style>

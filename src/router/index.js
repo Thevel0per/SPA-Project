@@ -13,7 +13,7 @@ const routes = [
   { path: "/login", component: LoginForm },
   { path: "/flashcard_sets", component: FlashcardSets },
   { path: "/", component: RootComponent },
-  { path: "/flashcard_set/:setname", name: "flashcard_set", component: FlashcardSet },
+  { path: "/flashcard_set/:id", name: "flashcard_set", component: FlashcardSet },
 ];
 
 const router = new VueRouter({
