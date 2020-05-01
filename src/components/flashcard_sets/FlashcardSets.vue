@@ -1,8 +1,6 @@
 <template>
   <div class="row flashcards-sets-content">
-    <div class="col-md-3">
-      <SetsFilters />
-    </div>
+    <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="row">
         <SearchBar />
@@ -25,14 +23,12 @@
 <script>
 import SearchBar from "../shared/SearchBar.vue";
 import FlashcardSetCard from "../shared/FlashcardSetCard.vue";
-import SetsFilters from "./SetsFilters.vue";
 
 export default {
   name: "FlashcardSets",
   components: {
     SearchBar,
-    FlashcardSetCard,
-    SetsFilters
+    FlashcardSetCard
   },
   data() {
     return {

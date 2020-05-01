@@ -1,9 +1,11 @@
 import db from "./db";
 
+const usersCollection = "users";
+
 var usersManager = {
   getAllUsers: callback => {
     db()
-      .collection("users")
+      .collection(usersCollection)
       .get()
       .then(snapshot => {
         let users = [];
@@ -15,7 +17,7 @@ var usersManager = {
   },
   getUsersByIds: (callback, references) => {
     db()
-      .collection("users")
+      .collection(usersCollection)
       .where(db.FieldPath.documentId(), "in", references)
       .get()
       .then(snapshot => {
@@ -24,6 +26,15 @@ var usersManager = {
           users.push(doc.data());
         });
         callback(users);
+      });
+  },
+  getUserById: (id, callback) => {
+    db()
+      .collection(usersCollection)
+      .doc(id)
+      .get()
+      .then(doc => {
+        callback(doc.ref);
       });
   }
 };

@@ -18,7 +18,12 @@
         <div class="row justify-content-md-center">
           <div class="col-md-1">
             <li class="nav-item active">
-              <router-link class="nav-link" to="/flashcard_sets" v-if="!loggedIn">Flashcards</router-link>
+              <router-link
+                class="nav-link"
+                to="/flashcard_sets"
+                v-if="!loggedIn"
+                >Flashcards</router-link
+              >
             </li>
           </div>
           <div class="col-md-1">
@@ -31,14 +36,41 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >My account</a>
+                >My account</a
+              >
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <router-link class="dropdown-item" to="/login" v-if="!loggedIn">Login</router-link>
-                <router-link class="dropdown-item" to="/register" v-if="!loggedIn">Register</router-link>
-                <router-link class="item" to="/userPanel" v-if="!loggedIn">My Account</router-link>
-
-                <div class="dropdown-divider" v-if="loggedIn"></div>
-                <router-link class="item right" to="/logout" v-if="loggedIn">Log out</router-link>
+                <router-link
+                  class="dropdown-item"
+                  to="/login"
+                  v-if="!this.$root.loggedUser"
+                >
+                  Login
+                </router-link>
+                <router-link
+                  class="dropdown-item"
+                  to="/register"
+                  v-if="!this.$root.loggedUser"
+                >
+                  Register
+                </router-link>
+                <router-link
+                  class="dropdown-item"
+                  to="/userPanel"
+                  v-if="this.$root.loggedUser"
+                >
+                  User Panel
+                </router-link>
+                <div
+                  class="dropdown-divider"
+                  v-if="this.$root.loggedUser"
+                ></div>
+                <button
+                  @click="logout"
+                  class="dropdown-item"
+                  v-if="this.$root.loggedUser"
+                >
+                  Log out
+                </button>
               </div>
             </li>
           </div>
@@ -60,11 +92,20 @@
 </template>
 
 <script>
+import UserHandler from "../database/userHandler";
+
 export default {
   props: {
     loggedIn: Boolean
   },
-  name: "HeaderMenu"
+  name: "HeaderMenu",
+  methods: {
+    logout(e) {
+      e.preventDefault();
+      UserHandler.logout(this.$router);
+      this.$root.loggedUser = null;
+    }
+  }
 };
 </script>
 

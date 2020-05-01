@@ -68,14 +68,17 @@ export default {
           }
         );
       } else {
-        this.$root.db.flashcardsSets.createSet(this.set_name, () => {
-          this.$router.replace("/flashcard_sets");
+        this.$root.db.users.getUserById(this.$root.loggedUser.uid, user => {
+          this.$root.db.flashcardsSets.createSet(this.set_name, user, () => {
+            console.log(user);
+            this.$router.replace("/flashcard_sets");
+          });
         });
       }
     }
   },
   mounted: function() {
-    this.flashcardSetId = this.$route.path.split("/").pop();
+    this.flashcardSetId = this.$route.params.set_id;
     this.set_name = this.$route.query.prevName;
     this.edit = this.$route.path.includes("/flashcard_sets/edit");
   }

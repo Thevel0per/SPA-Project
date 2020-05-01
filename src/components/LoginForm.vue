@@ -5,7 +5,9 @@
         <div class="card bg-dark text-center responsive-form w-50 mx-auto">
           <form class="card-body text-light">
             <div class="form-group row">
-              <label for="email" class="col-sm-12 col-md-4 col-form-label">E-mail</label>
+              <label for="email" class="col-sm-12 col-md-4 col-form-label"
+                >E-mail</label
+              >
               <div class="col-sm-12 col-md-8">
                 <input
                   name="email"
@@ -19,7 +21,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="password" class="col-sm-12 col-md-4 col-form-label">Password</label>
+              <label for="password" class="col-sm-12 col-md-4 col-form-label"
+                >Password</label
+              >
               <div class="col-sm-12 col-md-8">
                 <input
                   name="password"
@@ -33,7 +37,13 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-12">
-                <button v-on:click="login" type="submit" class="btn btn-outline-success w-50">Login</button>
+                <button
+                  v-on:click="login"
+                  type="submit"
+                  class="btn btn-outline-success w-50"
+                >
+                  Login
+                </button>
               </div>
             </div>
             <div class="form-group row">
@@ -41,16 +51,17 @@
                 <button
                   v-on:click="loginWithProvider"
                   type="submit"
-                  class="btn btn-outline-success w-25"
-                >Login with google</button>
+                  class="btn btn-outline-success w-50"
+                >
+                  Login with Google
+                </button>
               </div>
             </div>
           </form>
           <div class="login-form-link">
-            <router-link to="/register">You don't have an account yet? Register Now!</router-link>
-          </div>
-          <div class="login-form-link">
-            <router-link to="/register">Forgot your password? Let us get this sorted for you!</router-link>
+            <router-link to="/register"
+              >You don't have an account yet? Register Now!</router-link
+            >
           </div>
         </div>
       </div>

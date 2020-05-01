@@ -6,7 +6,9 @@
         <div class="card bg-dark text-center responsive-form w-50 mx-auto">
           <form class="card-body text-light">
             <div class="form-group row">
-              <label for="username" class="col-sm-12 col-md-4 col-form-label">Username</label>
+              <label for="username" class="col-sm-12 col-md-4 col-form-label">
+                Username
+              </label>
 
               <div class="col-sm-12 col-md-8">
                 <input
@@ -20,7 +22,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="email" class="col-sm-12 col-md-4 col-form-label">Email</label>
+              <label for="email" class="col-sm-12 col-md-4 col-form-label">
+                Email
+              </label>
 
               <div class="col-sm-12 col-md-8">
                 <input
@@ -34,7 +38,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="password" class="col-sm-12 col-md-4 col-form-label">Password</label>
+              <label for="password" class="col-sm-12 col-md-4 col-form-label">
+                Password
+              </label>
               <div class="col-sm-12 col-md-8">
                 <input
                   name="password"
@@ -51,11 +57,23 @@
                 <button
                   v-on:click="signUp"
                   type="submit"
-                  class="btn btn-outline-success w-25"
-                >Register</button>
+                  class="btn btn-outline-success w-50"
+                >
+                  Register
+                </button>
               </div>
             </div>
           </form>
+          <div class="register-form-links">
+            <p>OR</p>
+            <button
+              v-on:click="loginWithProvider"
+              type="submit"
+              class="btn btn-outline-success w-50"
+            >
+              Login with Google
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +82,7 @@
 
 <script>
 import UserHandler from "../database/userHandler";
+import Providers from "../database/Providers.js";
 
 export default {
   name: "register",
@@ -83,7 +102,17 @@ export default {
         this.username,
         this.$router
       );
+    },
+    loginWithProvider(e) {
+      e.preventDefault();
+      UserHandler.loginWithProvider(Providers.google, this.$router);
     }
   }
 };
 </script>
+
+<style scoped>
+.register-form-links {
+  color: white;
+}
+</style>
