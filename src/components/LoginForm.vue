@@ -33,7 +33,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-12">
-                <button v-on:click="login" type="submit" class="btn btn-outline-success w-25">Login</button>
+                <button v-on:click="login" type="submit" class="btn btn-outline-success w-50">Login</button>
               </div>
             </div>
           </form>

@@ -24,7 +24,7 @@
             <div class="col-md-2">
               <router-link
                 class="btn btn-outline-success btn-lg w-100"
-                to="/login"
+                to="/register"
                 role="button"
               >
                 Register

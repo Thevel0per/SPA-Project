@@ -1,6 +1,10 @@
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
   div.responsive-form {
     width: 100% !important;
+  }
+
+  div.form-group label {
+    display: none;
   }
 }
 
