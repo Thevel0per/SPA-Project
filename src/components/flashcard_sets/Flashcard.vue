@@ -1,7 +1,7 @@
 <template>
   <div class="flashcard-set card bg-dark">
     <div class="card-body text-light">
-          <div class="row justify-content-center">{{this.flashcard[0].word}}</div>
+          <div class="row justify-content-center">{{this.flashcard.word}}</div>
           <br v-if="edit_card">
           <input
             type="text"
@@ -10,7 +10,7 @@
             v-model="word"
             v-if="edit_card"
           /><br>
-          <div class="row justify-content-center">{{this.flashcard[0].translated_word}}</div>
+          <div class="row justify-content-center">{{this.flashcard.translated_word}}</div>
           <br v-if="edit_card">
           <input
             type="text"
@@ -44,20 +44,20 @@
 export default {
   name: "Flashcard",
   props: {
-    flashcard: Array,
+    flashcard: Object,
     edit_set: Boolean,
   },
     data() {
     return {
       edit_card: false,
-      word: this.flashcard[0].word,
-      translated_word: this.flashcard[0].translated_word
+      word: this.flashcard.word,
+      translated_word: this.flashcard.translated_word
     };
   },
   methods:{
     deleteFlashcard(){
       this.$emit("updateset");
-      this.$root.db.flashcard.deleteFlashcard(this.flashcard[1]);
+      this.$root.db.flashcards.deleteFlashcard(this.flashcard.id);
     },
     changeEdit(){
       if(this.edit_card == false) this.edit_card = true;
@@ -66,7 +66,7 @@ export default {
     updateFlashcard(){
       console.log("update");
 
-      this.$root.db.flashcard.updateFlashcard(this.flashcard[1], this.word, this.translated_word);
+      this.$root.db.flashcards.updateFlashcard(this.flashcard.id, this.word, this.translated_word);
 
       this.edit_card = false;
       this.$emit("updateset");

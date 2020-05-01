@@ -62,19 +62,19 @@
               </div>
             </li>
           </div>
+          <div class="col-md-1">
+            <li class="nav-item">
+              <router-link
+                class="nav-link"
+                to="/flashcard_sets/new"
+                v-if="loggedIn"
+              >
+                New Flashcards Set
+              </router-link>
+            </li>
+          </div>
         </div>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
     </div>
   </nav>
 </template>
@@ -91,7 +91,6 @@ export default {
 <style scoped>
 div.row {
   width: 100%;
-  margin-left: 10%;
 }
 
 div.col-md-1 {

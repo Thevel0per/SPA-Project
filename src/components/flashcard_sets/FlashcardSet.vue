@@ -22,7 +22,7 @@
         </div>
         </div>
         <div class="row" v-for="(card, index) in flashcards" :key="index">
-        <flashcard v-on:updateset="updateEvent()" :flashcard="card" :edit_set="edit_set" />
+        <flashcard v-on:updateset="updateEvent" :flashcard="card" :edit_set="edit_set" />
         </div>
         <div class="row" v-if="edit_set">
           <div class="flashcard-set card bg-dark">
@@ -77,7 +77,7 @@ export default {
   methods:{
     addFlashcard(){
       this.$root.db.flashcardsSets.getSetById(this.$route.params.id ,set => {   
-        this.$root.db.flashcard.setNewFlashcard(set.ref, this.word, this.translated_word); 
+        this.$root.db.flashcards.setNewFlashcard(set.ref, this.word, this.translated_word); 
         this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
           this.flashcards = i;
         });

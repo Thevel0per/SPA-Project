@@ -35,7 +35,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-12">
-                <button type="submit" class="btn btn-outline-success w-25">
+                <button type="submit" class="btn btn-outline-success w-50">
                   Login
                 </button>
               </div>
