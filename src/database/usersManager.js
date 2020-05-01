@@ -36,6 +36,15 @@ var usersManager = {
       .then(doc => {
         callback(doc.ref);
       });
+  },
+  getFlashCardSetOwnerId: (setRefId, callback) => {
+    db()
+      .collection("flashcards_sets")
+      .doc(setRefId)
+      .get()
+      .then(doc => {
+        callback(doc.data().user.id);
+      });
   }
 };
 

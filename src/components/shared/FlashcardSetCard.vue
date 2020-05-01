@@ -9,10 +9,11 @@
           </div>
         </div>
         <div class="col-md-4 offset-md-1">
-          <button @click="destroySet">
+          <button @click="destroySet" v-if="owner">
             <i class="far fa-2x fa-trash-alt"></i>
           </button>
           <router-link
+            v-if="owner"
             :to="{
               name: 'flashcard_set_edit_path',
               query: { prevName: this.flashcardSet.name },
@@ -38,6 +39,11 @@
 <script>
 export default {
   name: "FlashcardSetCard",
+  data: function() {
+    return {
+      owner: false
+    };
+  },
   props: {
     flashcardSet: Object
   },
@@ -50,6 +56,15 @@ export default {
       );
       this.$emit("set-destroyed");
     }
+  },
+  mounted: function() {
+    this.$root.db.users.getFlashCardSetOwnerId(
+      this.flashcardSet.ref.id,
+      userId => {
+        console.log(userId);
+        this.owner = this.$root.loggedUser.uid == userId;
+      }
+    );
   }
 };
 </script>

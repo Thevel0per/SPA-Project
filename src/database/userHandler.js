@@ -27,13 +27,12 @@ export default class UserHandler {
     return { error: false };
   }
 
-  static register(email, password, username, router) {
+  static register(component, email, password, username, router) {
     AUTH()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         const currUser = firebase.auth().currentUser;
         currUser.updateProfile({ displayName: username }).then(() => {
-          console.log(currUser);
           firebase
             .firestore()
             .collection("users")
@@ -43,6 +42,7 @@ export default class UserHandler {
               username: currUser.displayName
             })
             .then(() => {
+              component.$root.loggedUser = currUser;
               UserHandler.login(email, password, router);
             });
         });
@@ -52,10 +52,11 @@ export default class UserHandler {
       });
   }
 
-  static login(email, password, router) {
+  static login(component, email, password, router) {
     AUTH()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(u => {
+        component.$root.loggedUser = u.user;
         router.replace("/flashcard_sets");
       })
       .catch(error => {
@@ -63,7 +64,7 @@ export default class UserHandler {
       });
   }
 
-  static loginWithProvider(provider, router) {
+  static loginWithProvider(component, provider, router) {
     AUTH()
       .signInWithPopup(provider)
       .then(() => {
@@ -77,6 +78,7 @@ export default class UserHandler {
             username: currUser.displayName
           })
           .then(() => {
+            component.$root.loggedUser = currUser;
             router.replace("/flashcard_sets");
           });
       });

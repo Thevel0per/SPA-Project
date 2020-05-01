@@ -97,6 +97,7 @@ export default {
     signUp(e) {
       e.preventDefault();
       UserHandler.register(
+        this,
         this.email,
         this.password,
         this.username,
@@ -105,7 +106,7 @@ export default {
     },
     loginWithProvider(e) {
       e.preventDefault();
-      UserHandler.loginWithProvider(Providers.google, this.$router);
+      UserHandler.loginWithProvider(this, Providers.google, this.$router);
     }
   }
 };

@@ -84,11 +84,11 @@ export default {
   methods: {
     login(e) {
       e.preventDefault();
-      UserHandler.login(this.email, this.password, this.$router);
+      UserHandler.login(this, this.email, this.password, this.$router);
     },
     loginWithProvider(e) {
       e.preventDefault();
-      UserHandler.loginWithProvider(Providers.google, this.$router);
+      UserHandler.loginWithProvider(this, Providers.google, this.$router);
     }
   }
 };

@@ -13,6 +13,7 @@ var flashcardsSetsManager = {
           set.ref = doc.ref;
           set.user.get().then(u => {
             set.user = u.data();
+            set.userId = u.ref.id;
           });
           sets.push(set);
         });
@@ -21,7 +22,7 @@ var flashcardsSetsManager = {
   },
   getSetById: (id, callback) => {
     db()
-      .collection("flashcards_sets")
+      .collection(collectionName)
       .doc(id)
       .get()
       .then(snapshot => {

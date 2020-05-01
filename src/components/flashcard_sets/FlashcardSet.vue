@@ -20,7 +20,7 @@
               <button>
                 <i class="fas fa-2x fa-graduation-cap"></i>
               </button>
-              <button @click="changeEdit()">
+              <button @click="changeEdit()" v-if="owner">
                 <i class="far fa-2x fa-edit"></i>
               </button>
             </div>
@@ -81,7 +81,8 @@ export default {
       word: "",
       translated_word: "",
       edit_set: false,
-      setname: ""
+      setname: "",
+      owner: false
     };
   },
   methods: {
@@ -117,6 +118,13 @@ export default {
         this.flashcards = i;
       });
     });
+
+    this.$root.db.users.getFlashCardSetOwnerId(
+      this.$route.params.id,
+      userId => {
+        this.owner = this.$root.loggedUser.uid == userId;
+      }
+    );
   }
 };
 </script>
