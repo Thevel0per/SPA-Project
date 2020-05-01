@@ -1,25 +1,21 @@
 import db from "./db";
-
+var cards = db().collection("flashcards");
 var flashcardsManager = {
   getFlashcardsForSet: (ref, callback) => {
-    db()
-      .collection("flashcards")
-      .where("flashcards_set", "==", ref)
+    cards.where("flashcards_set", "==", ref)
       .get()
       .then(snapshot => {
         let flashcards = [];
         snapshot.forEach(doc => {
           let element = doc.data();
           element.id = doc.id;
-          //element.push(doc.data());
-          //element.push(doc.id);
           flashcards.push(element);
         });
         callback(flashcards);
       });
   },
   setNewFlashcard: (ref, word, translated_word) => {
-    db().collection("flashcards").add({
+    cards.add({
         flashcards_set: ref,
         word: word,
         translated_word: translated_word
@@ -32,14 +28,14 @@ var flashcardsManager = {
     });
   },
   deleteFlashcard: (id) => {
-    db().collection("flashcards").doc(id).delete().then(function() {
+    cards.doc(id).delete().then(function() {
         console.log("Document successfully deleted!");
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
   },
   updateFlashcard: (id, word, translated_word) => {
-    db().collection("flashcards").doc(id).set({
+    cards.doc(id).set({
       word: word,
       translated_word: translated_word
     }, {merge: true})
