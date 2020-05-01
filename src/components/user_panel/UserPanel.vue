@@ -1,52 +1,135 @@
 <template>
-  <div class="row flashcards-sets-content">
-    <div class="col-md-3">
-      <nav class="side-menu h-100">
-        <div class="row h-100">
-          <div
-            class="col-md-6 offset-md-1 my-auto card bg-light text-light h-25"
-          >
-            <div class="row card bg-dark my-auto">DUpa</div>
-          </div>
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-12 my-auto">
+        <div class="card bg-dark text-center responsive-form w-50 mx-auto">
+          <form class="card-body text-light">
+            <div class="form-group row">
+              <div class="col-sm-12 col-md-8">
+                <input
+                  name="email"
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  h-100
+                  placeholder="New email"
+                  v-model="email"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <button
+                  v-on:click="changeEmail"
+                  type="submit"
+                  class="btn btn-outline-success w-25"
+                >change</button>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 col-md-8">
+                <input
+                  name="password"
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="New password"
+                  v-model="password"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 col-md-8">
+                <input
+                  name="repeatPassword"
+                  type="password"
+                  class="form-control"
+                  id="repeatPassword"
+                  placeholder="Repeat password"
+                  v-model="repeatedPassword"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <button
+                  v-on:click="changePassword"
+                  type="submit"
+                  class="btn btn-outline-success w-25"
+                >change</button>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 col-md-8">
+                <input
+                  name="username"
+                  type="username"
+                  class="form-control"
+                  id="username"
+                  placeholder="New username"
+                  v-model="username"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <button
+                  v-on:click="changeUsername"
+                  type="submit"
+                  class="btn btn-outline-success w-25"
+                >change</button>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <button
+                  v-on:click="logout"
+                  type="submit"
+                  class="btn btn-outline-success w-25"
+                >Log out</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </nav>
-    </div>
-    <div class="col-md-6">
-      <div class="row">
-        <SearchBar />
-      </div>
-      <div class="row" v-for="(set, index) in flashcardSets" :key="index">
-        <FlashcardSetCard :flashcardSet="set" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SearchBar from "../shared/SearchBar.vue";
-import FlashcardSetCard from "../shared/FlashcardSetCard.vue";
+import UserHandler from "../../database/userHandler";
 
 export default {
   name: "UserPanel",
-  components: {
-    SearchBar,
-    FlashcardSetCard
-  },
-  data() {
+  data: function() {
     return {
-      flashcardSets: []
+      email: "",
+      password: "",
+      repeatedPassword: "",
+      username: ""
     };
   },
-  mounted: function() {
-    this.$root.db.flashcardsSets.getAllSets(u => {
-      this.flashcardSets = u;
-    });
+  methods: {
+    changePassword(e) {
+      e.preventDefault();
+      UserHandler.changePassword(
+        this.password,
+        this.repeatedPassword,
+        this.$router
+      );
+    },
+    changeEmail(e) {
+      e.preventDefault();
+      UserHandler.changeEmail(this.email, this.$router);
+    },
+    changeUsername(e) {
+      e.preventDefault();
+      UserHandler.changeUsername(this.username, this.$router);
+    },
+    logout(e) {
+      e.preventDefault();
+      UserHandler.logout(this.$router);
+    }
   }
 };
 </script>
-
-<style scoped>
-nav .row {
-  margin: 0 !important;
-}
-</style>
