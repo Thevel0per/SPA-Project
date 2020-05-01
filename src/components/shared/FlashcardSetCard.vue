@@ -1,5 +1,5 @@
 <template>
-  <div class="flashcard-set card bg-dark">
+<div class="flashcard-set card bg-dark">
     <div class="card-body text-light">
       <div class="row">
         <div class="col-md-6 offset-md-1">
@@ -20,7 +20,9 @@
           >
             <i class="far fa-2x fa-edit"></i>
           </router-link>
-          <button><i class="far fa-2x fa-eye"></i></button>
+          <router-link :to="{ name: 'flashcard_set', params: { id: this.flashcardSet.ref.id }}">
+            <i class="far fa-2x fa-eye"></i>
+          </router-link>
         </div>
       </div>
     </div>
@@ -28,6 +30,7 @@
 </template>
 
 <script>
+
 export default {
   name: "FlashcardSetCard",
   props: {
