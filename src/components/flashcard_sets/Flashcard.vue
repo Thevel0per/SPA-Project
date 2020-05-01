@@ -107,11 +107,14 @@ export default {
     },
     changeEdit() {
       if (this.edit_card == false) this.edit_card = true;
-      else this.edit_card = false;
+      else {
+        this.edit_card = false;
+        this.translate = false;
+      }
     },
     updateFlashcard() {
       console.log("update");
-
+      this.translate = false;
       this.$root.db.flashcards.updateFlashcard(
         this.flashcard.id,
         this.word,
