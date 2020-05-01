@@ -68,7 +68,7 @@ export default {
       flashcards: [],
       correctAnswers: 0,
       totalAnswers: 0,
-      currentQuestion: "Placeholder",
+      currentQuestion: "No flashcards found. Go back",
       currentQuestionId: 0,
       allTranslations: []
     };
