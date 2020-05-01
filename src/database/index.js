@@ -5,7 +5,7 @@ import flashcardsManager from "./flashcardsManager";
 var database = {
   users: usersManager,
   flashcardsSets: flashcardsSetsManager,
-  flashcards: flashcardsManager,
+  flashcards: flashcardsManager
 };
 
 export default database;

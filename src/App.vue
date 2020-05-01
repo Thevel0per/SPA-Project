@@ -17,7 +17,7 @@ export default {
     };
   },
   created: function() {
-    UserHandler.addListener();
+    UserHandler.addListener(this);
   },
   components: {
     HeaderMenu

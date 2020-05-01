@@ -1,5 +1,5 @@
 <template>
-<div class="flashcard-set card bg-dark">
+  <div class="flashcard-set card bg-dark">
     <div class="card-body text-light">
       <div class="row">
         <div class="col-md-6 offset-md-1">
@@ -14,13 +14,19 @@
           </button>
           <router-link
             :to="{
-              path: `/flashcard_sets/edit/${this.flashcardSet.ref.id}`,
-              query: { prevName: this.flashcardSet.name }
+              name: 'flashcard_set_edit_path',
+              query: { prevName: this.flashcardSet.name },
+              params: { set_id: this.flashcardSet.ref.id }
             }"
           >
             <i class="far fa-2x fa-edit"></i>
           </router-link>
-          <router-link :to="{ name: 'flashcard_set', params: { id: this.flashcardSet.ref.id }}">
+          <router-link
+            :to="{
+              name: 'flashcard_set',
+              params: { id: this.flashcardSet.ref.id }
+            }"
+          >
             <i class="far fa-2x fa-eye"></i>
           </router-link>
         </div>
@@ -30,7 +36,6 @@
 </template>
 
 <script>
-
 export default {
   name: "FlashcardSetCard",
   props: {

@@ -23,7 +23,9 @@
                   v-on:click="changeEmail"
                   type="submit"
                   class="btn btn-outline-success w-25"
-                >change</button>
+                >
+                  change
+                </button>
               </div>
             </div>
             <div class="form-group row">
@@ -56,7 +58,9 @@
                   v-on:click="changePassword"
                   type="submit"
                   class="btn btn-outline-success w-25"
-                >change</button>
+                >
+                  change
+                </button>
               </div>
             </div>
             <div class="form-group row">
@@ -77,7 +81,9 @@
                   v-on:click="changeUsername"
                   type="submit"
                   class="btn btn-outline-success w-25"
-                >change</button>
+                >
+                  change
+                </button>
               </div>
             </div>
             <div class="form-group row">
@@ -86,7 +92,9 @@
                   v-on:click="logout"
                   type="submit"
                   class="btn btn-outline-success w-25"
-                >Log out</button>
+                >
+                  Log out
+                </button>
               </div>
             </div>
           </form>
