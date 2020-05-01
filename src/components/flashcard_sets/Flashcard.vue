@@ -81,9 +81,9 @@ export default {
   name: "Flashcard",
   props: {
     flashcard: Object,
-    edit_set: Boolean,
+    edit_set: Boolean
   },
-    data() {
+  data() {
     return {
       edit_card: false,
       word: this.flashcard.word,
@@ -100,19 +100,23 @@ export default {
       auto_language: {name: "Auto", code: 'auto'}
     };
   },
-  methods:{
-    deleteFlashcard(){
+  methods: {
+    deleteFlashcard() {
       this.$emit("updateset");
       this.$root.db.flashcards.deleteFlashcard(this.flashcard.id);
     },
-    changeEdit(){
-      if(this.edit_card == false) this.edit_card = true;
+    changeEdit() {
+      if (this.edit_card == false) this.edit_card = true;
       else this.edit_card = false;
     },
-    updateFlashcard(){
+    updateFlashcard() {
       console.log("update");
 
-      this.$root.db.flashcards.updateFlashcard(this.flashcard.id, this.word, this.translated_word);
+      this.$root.db.flashcards.updateFlashcard(
+        this.flashcard.id,
+        this.word,
+        this.translated_word
+      );
 
       this.edit_card = false;
       this.$emit("updateset");

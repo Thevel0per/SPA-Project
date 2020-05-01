@@ -1,24 +1,30 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-3">
-        <div class="row">
+      <div class="row">
         <div class="flashcard-set card bg-dark">
-            <div class="card-body text-light">
-                <div class="row justify-content-center">
-                  {{ setname }}
-                </div><br>
-                <div class="row justify-content-center">
-                  <button>
-                    <i class="fas fa-2x fa-book-reader"></i>
-                  </button>
-                  <button>
-                    <i class="fas fa-2x fa-graduation-cap"></i>
-                  </button>
-                  <button @click="changeEdit()">
-                    <i class="far fa-2x fa-edit"></i>
-                  </button>
-                </div>
+          <div class="card-body text-light">
+            <div class="row justify-content-center">
+              {{ setname }}
             </div>
+            <br />
+            <div class="row justify-content-center">
+              <router-link
+                :to="{
+                  name: 'learn_set_path',
+                  params: { set_id: this.$route.params.id }
+                }"
+              >
+                <i class="fas fa-2x fa-book-reader"></i>
+              </router-link>
+              <button>
+                <i class="fas fa-2x fa-graduation-cap"></i>
+              </button>
+              <button @click="changeEdit()" v-if="owner">
+                <i class="far fa-2x fa-edit"></i>
+              </button>
+            </div>
+          </div>
         </div>
         </div>
         <div class="row" v-for="(card, index) in flashcards" :key="index">
@@ -88,10 +94,10 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
-  </div>
+  
 </template>
-
 
 <script>
 import Flashcard from "./Flashcard.vue";
@@ -104,8 +110,8 @@ export default {
   data() {
     return {
       flashcards: [],
-      word: '',
-      translated_word: '',
+      word: "",
+      translated_word: "",
       edit_set: false,
       setname: '',
       translate: false,
@@ -117,20 +123,25 @@ export default {
         {name: "German", code: "de"},
         {name: "French", code: "fr"}
         ],
-      auto_language: {name: "Auto", code: 'auto'}
+      auto_language: {name: "Auto", code: 'auto'},
+      owner: false
     };
   },
-  methods:{
-    addFlashcard(){
-      this.$root.db.flashcardsSets.getSetById(this.$route.params.id ,set => {   
-        this.$root.db.flashcards.setNewFlashcard(set.ref, this.word, this.translated_word); 
-        this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
+  methods: {
+    addFlashcard() {
+      this.$root.db.flashcardsSets.getSetById(this.$route.params.id, set => {
+        this.$root.db.flashcards.setNewFlashcard(
+          set.ref,
+          this.word,
+          this.translated_word
+        );
+        this.$root.db.flashcards.getFlashcardsForSet(set.ref, i => {
           this.flashcards = i;
         });
       });
     },
-    changeEdit(){
-      if(this.edit_set == false) this.edit_set = true;
+    changeEdit() {
+      if (this.edit_set == false) this.edit_set = true;
       else this.edit_set = false;
     },
     changeTranslate(){
@@ -175,12 +186,19 @@ export default {
     }
   },
   mounted: function() {
-    this.$root.db.flashcardsSets.getSetById(this.$route.params.id ,set => {   
-      this.setname = set.data().name; 
-      this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
+    this.$root.db.flashcardsSets.getSetById(this.$route.params.id, set => {
+      this.setname = set.data().name;
+      this.$root.db.flashcards.getFlashcardsForSet(set.ref, i => {
         this.flashcards = i;
       });
     });
+
+    this.$root.db.users.getFlashCardSetOwnerId(
+      this.$route.params.id,
+      userId => {
+        this.owner = this.$root.loggedUser.uid == userId;
+      }
+    );
   }
 };
 </script>

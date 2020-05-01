@@ -1,5 +1,5 @@
 <template>
-<div class="flashcard-set card bg-dark">
+  <div class="flashcard-set card bg-dark">
     <div class="card-body text-light">
       <div class="row">
         <div class="col-md-6 offset-md-1">
@@ -8,19 +8,26 @@
             <small>{{ this.flashcardSet.user.username }}</small>
           </div>
         </div>
-        <div class="col-md-4 offset-md-1">
-          <button @click="destroySet">
+        <div class="col-md-4 offset-md-1 text-center">
+          <button @click="destroySet" v-if="owner">
             <i class="far fa-2x fa-trash-alt"></i>
           </button>
           <router-link
+            v-if="owner"
             :to="{
-              path: `/flashcard_sets/edit/${this.flashcardSet.ref.id}`,
-              query: { prevName: this.flashcardSet.name }
+              name: 'flashcard_set_edit_path',
+              query: { prevName: this.flashcardSet.name },
+              params: { set_id: this.flashcardSet.ref.id }
             }"
           >
             <i class="far fa-2x fa-edit"></i>
           </router-link>
-          <router-link :to="{ name: 'flashcard_set', params: { id: this.flashcardSet.ref.id }}">
+          <router-link
+            :to="{
+              name: 'flashcard_set',
+              params: { id: this.flashcardSet.ref.id }
+            }"
+          >
             <i class="far fa-2x fa-eye"></i>
           </router-link>
         </div>
@@ -30,9 +37,13 @@
 </template>
 
 <script>
-
 export default {
   name: "FlashcardSetCard",
+  data: function() {
+    return {
+      owner: false
+    };
+  },
   props: {
     flashcardSet: Object
   },
@@ -45,6 +56,15 @@ export default {
       );
       this.$emit("set-destroyed");
     }
+  },
+  mounted: function() {
+    this.$root.db.users.getFlashCardSetOwnerId(
+      this.flashcardSet.ref.id,
+      userId => {
+        console.log(userId);
+        this.owner = this.$root.loggedUser.uid == userId;
+      }
+    );
   }
 };
 </script>

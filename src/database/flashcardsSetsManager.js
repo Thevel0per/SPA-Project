@@ -13,6 +13,7 @@ var flashcardsSetsManager = {
           set.ref = doc.ref;
           set.user.get().then(u => {
             set.user = u.data();
+            set.userId = u.ref.id;
           });
           sets.push(set);
         });
@@ -21,18 +22,19 @@ var flashcardsSetsManager = {
   },
   getSetById: (id, callback) => {
     db()
-    .collection("flashcards_sets")
-    .doc(id)
-    .get()
-    .then(snapshot => {
-      callback(snapshot);
-    });
+      .collection(collectionName)
+      .doc(id)
+      .get()
+      .then(snapshot => {
+        callback(snapshot);
+      });
   },
-  createSet: (setName, callback) => {
+  createSet: (setName, userRef, callback) => {
     db()
       .collection(collectionName)
       .add({
-        name: setName
+        name: setName,
+        user: userRef
       })
       .then(() => {
         callback();
