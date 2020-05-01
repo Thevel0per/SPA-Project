@@ -8,7 +8,7 @@
             <small>{{ this.flashcardSet.user.username }}</small>
           </div>
         </div>
-        <div class="col-md-4 offset-md-1">
+        <div class="col-md-4 offset-md-1 text-center">
           <button @click="destroySet" v-if="owner">
             <i class="far fa-2x fa-trash-alt"></i>
           </button>
