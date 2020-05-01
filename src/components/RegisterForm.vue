@@ -1,13 +1,12 @@
 <template>
   <div class="container h-100">
+    <!-- <div v-if="error" class="error">{{error.message}}</div> -->
     <div class="row h-100">
       <div class="col-md-12 my-auto">
         <div class="card bg-dark text-center responsive-form w-50 mx-auto">
           <form class="card-body text-light">
             <div class="form-group row">
-              <label for="username" class="col-sm-12 col-md-4 col-form-label">
-                Username
-              </label>
+              <label for="username" class="col-sm-12 col-md-4 col-form-label">Username</label>
 
               <div class="col-sm-12 col-md-8">
                 <input
@@ -15,15 +14,13 @@
                   type="text"
                   class="form-control"
                   id="username"
-                  h-100
-                  placeholder="Username"
+                  placeholder="username"
+                  v-model="username"
                 />
               </div>
             </div>
             <div class="form-group row">
-              <label for="email" class="col-sm-12 col-md-4 col-form-label">
-                Email
-              </label>
+              <label for="email" class="col-sm-12 col-md-4 col-form-label">Email</label>
 
               <div class="col-sm-12 col-md-8">
                 <input
@@ -31,30 +28,31 @@
                   type="text"
                   class="form-control"
                   id="email"
-                  h-100
-                  placeholder="Email"
+                  placeholder="email"
+                  v-model="email"
                 />
               </div>
             </div>
             <div class="form-group row">
-              <label for="password" class="col-sm-12 col-md-4 col-form-label">
-                Password
-              </label>
+              <label for="password" class="col-sm-12 col-md-4 col-form-label">Password</label>
               <div class="col-sm-12 col-md-8">
                 <input
                   name="password"
                   type="password"
                   class="form-control"
                   id="password"
-                  placeholder="Password"
+                  placeholder="password"
+                  v-model="password"
                 />
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-12">
-                <button type="submit" class="btn btn-outline-success w-25">
-                  Register
-                </button>
+                <button
+                  v-on:click="signUp"
+                  type="submit"
+                  class="btn btn-outline-success w-25"
+                >Register</button>
               </div>
             </div>
           </form>
@@ -65,7 +63,27 @@
 </template>
 
 <script>
+import UserHandler from "../database/userHandler";
+
 export default {
-  name: "RegisterForm"
+  name: "register",
+  data: function() {
+    return {
+      email: "",
+      password: "",
+      username: ""
+    };
+  },
+  methods: {
+    signUp(e) {
+      e.preventDefault();
+      UserHandler.register(
+        this.email,
+        this.password,
+        this.username,
+        this.$router
+      );
+    }
+  }
 };
 </script>

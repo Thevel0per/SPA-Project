@@ -7,6 +7,7 @@
 
 <script>
 import HeaderMenu from "./components/HeaderMenu.vue";
+import UserHandler from "./database/userHandler";
 
 export default {
   name: "App",
@@ -14,6 +15,9 @@ export default {
     return {
       loggedIn: false
     };
+  },
+  created: function() {
+    UserHandler.addListener();
   },
   components: {
     HeaderMenu
