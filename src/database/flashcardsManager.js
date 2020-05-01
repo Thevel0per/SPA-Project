@@ -55,8 +55,26 @@ var flashcardsManager = {
       })
       .catch(function(error) {
         console.error("Error updating document: ", error);
-      });
-  }
+    });
+  },
+  translate: (language, targetLanguage, word, callback) => {
+    let xhr = new XMLHttpRequest();
+    let URL = "https://systran-systran-platform-for-language-processing-v1.p.rapidapi.com/translation/text/translate?source=" + language + "&target=" + targetLanguage + "&input=" + word;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === this.DONE) {
+        console.log("response:",this.responseText);
+        callback(this.responseText)
+      }
+    });
+
+    xhr.open("GET", URL);
+    xhr.setRequestHeader("x-rapidapi-host", "systran-systran-platform-for-language-processing-v1.p.rapidapi.com");
+    xhr.setRequestHeader("x-rapidapi-key", "482cdac65emsh8666d06d1f83e34p1def36jsn80007fcad40b");
+
+    xhr.send();
+
+  } 
 };
 
 export default flashcardsManager;
