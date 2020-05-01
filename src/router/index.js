@@ -8,6 +8,7 @@ import LearnFlashcardSet from "../components/flashcard_sets/LearnFlashcardSet.vu
 import UserPanel from "../components/user_panel/UserPanel.vue";
 import RootComponent from "../components/RootComponent.vue";
 import FlashcardSet from "../components/flashcard_sets/FlashcardSet.vue";
+import Quiz from "../components/flashcard_sets/Quiz.vue";
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,11 @@ const routes = [
     name: "learn_set_path",
     path: "/flashcard_sets/learn/:set_id",
     component: LearnFlashcardSet
+  },
+  {
+    name: "quiz_path",
+    path: "/flashcard_sets/quiz/:set_id",
+    component: Quiz
   }
 ];
 

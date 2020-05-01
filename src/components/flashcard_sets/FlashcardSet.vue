@@ -17,9 +17,14 @@
               >
                 <i class="fas fa-2x fa-book-reader"></i>
               </router-link>
-              <button>
+              <router-link
+                :to="{
+                  name: 'quiz_path',
+                  params: { set_id: this.$route.params.id }
+                }"
+              >
                 <i class="fas fa-2x fa-graduation-cap"></i>
-              </button>
+              </router-link>
               <button @click="changeEdit()" v-if="owner">
                 <i class="far fa-2x fa-edit"></i>
               </button>
