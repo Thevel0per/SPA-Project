@@ -8,7 +8,7 @@
         <SearchBar />
       </div>
       <div class="row" v-for="(set, index) in flashcardSets" :key="index">
-        <FlashcardSetCard :flashcardSet="set" />
+        <FlashcardSetCard :flashcardSet="set" @set-destroyed="updateSetsList" />
       </div>
       <div class="row">
         <router-link
@@ -43,6 +43,13 @@ export default {
     this.$root.db.flashcardsSets.getAllSets(u => {
       this.flashcardSets = u;
     });
+  },
+  methods: {
+    updateSetsList: function() {
+      this.$root.db.flashcardsSets.getAllSets(u => {
+        this.flashcardSets = u;
+      });
+    }
   }
 };
 </script>

@@ -28,6 +28,26 @@ var flashcardsSetsManager = {
       .then(() => {
         callback();
       });
+  },
+  updateSet: (setName, documentId, callback) => {
+    db()
+      .collection(collectionName)
+      .doc(documentId)
+      .update({
+        name: setName
+      })
+      .then(() => {
+        callback();
+      });
+  },
+  destroySet: (documentId, callback) => {
+    db()
+      .collection(collectionName)
+      .doc(documentId)
+      .delete()
+      .then(() => {
+        callback();
+      });
   }
 };
 

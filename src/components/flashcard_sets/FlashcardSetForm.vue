@@ -26,8 +26,16 @@
                 <button
                   @click="createNewSet"
                   class="btn btn-outline-success w-25"
+                  v-if="!edit"
                 >
                   Create Set
+                </button>
+                <button
+                  @click="createNewSet"
+                  class="btn btn-outline-success w-25"
+                  v-else
+                >
+                  Update Set
                 </button>
               </div>
             </div>
@@ -40,19 +48,36 @@
 
 <script>
 export default {
-  name: "NewFlashcardSetForm",
+  name: "FlashcardSetForm",
   data: () => {
     return {
-      set_name: ""
+      set_name: "",
+      edit: false,
+      flashcardSetId: ""
     };
   },
   methods: {
     createNewSet: function(e) {
       e.preventDefault();
-      this.$root.db.flashcardsSets.createSet(this.set_name, () => {
-        this.$router.replace("/flashcard_sets");
-      });
+      if (this.edit) {
+        this.$root.db.flashcardsSets.updateSet(
+          this.set_name,
+          this.flashcardSetId,
+          () => {
+            this.$router.replace("/flashcard_sets");
+          }
+        );
+      } else {
+        this.$root.db.flashcardsSets.createSet(this.set_name, () => {
+          this.$router.replace("/flashcard_sets");
+        });
+      }
     }
+  },
+  mounted: function() {
+    this.flashcardSetId = this.$route.path.split("/").pop();
+    this.set_name = this.$route.query.prevName;
+    this.edit = this.$route.path.includes("/flashcard_sets/edit");
   }
 };
 </script>
