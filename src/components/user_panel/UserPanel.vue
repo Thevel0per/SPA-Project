@@ -5,7 +5,7 @@
         <div class="card bg-dark text-center responsive-form w-50 mx-auto">
           <form class="card-body text-light">
             <div class="form-group row">
-              <div class="col-sm-12 col-md-8">
+              <div class="form-part col-sm-12 col-md-8">
                 <input
                   name="email"
                   type="text"
@@ -16,20 +16,18 @@
                   v-model="email"
                 />
               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-12">
+              <div class="form-part col-sm-12 col-md-3">
                 <button
                   v-on:click="changeEmail"
                   type="submit"
-                  class="btn btn-outline-success w-25"
+                  class="btn btn-outline-success w-100"
                 >
                   change
                 </button>
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-12 col-md-8">
+              <div class="form-part col-sm-12 col-md-8">
                 <input
                   name="password"
                   type="password"
@@ -39,9 +37,7 @@
                   v-model="password"
                 />
               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-12 col-md-8">
+              <div class="form-part col-sm-12 col-md-8">
                 <input
                   name="repeatPassword"
                   type="password"
@@ -51,20 +47,18 @@
                   v-model="repeatedPassword"
                 />
               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-12">
+              <div class="form-part col-sm-12 col-md-3">
                 <button
                   v-on:click="changePassword"
                   type="submit"
-                  class="btn btn-outline-success w-25"
+                  class="btn btn-outline-success w-100"
                 >
                   change
                 </button>
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-12 col-md-8">
+              <div class="form-part col-sm-12 col-md-8">
                 <input
                   name="username"
                   type="username"
@@ -74,26 +68,13 @@
                   v-model="username"
                 />
               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-12">
+              <div class="form-part col-sm-12 col-md-3">
                 <button
                   v-on:click="changeUsername"
                   type="submit"
-                  class="btn btn-outline-success w-25"
+                  class="btn btn-outline-success w-100"
                 >
                   change
-                </button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-12">
-                <button
-                  v-on:click="logout"
-                  type="submit"
-                  class="btn btn-outline-success w-25"
-                >
-                  Log out
                 </button>
               </div>
             </div>
@@ -141,3 +122,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+div.form-part {
+  margin: 5px 0;
+}
+</style>
