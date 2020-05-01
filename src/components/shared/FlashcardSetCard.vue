@@ -11,7 +11,9 @@
         <div class="col-md-4 offset-md-1">
           <button><i class="far fa-2x fa-trash-alt"></i></button>
           <button><i class="far fa-2x fa-edit"></i></button>
-          <button><i class="far fa-2x fa-eye" @click="toCardSet()"></i></button>
+          <router-link :to="{ name: 'flashcard_set', params: { id: this.flashcardSet.ref.id }}">
+            <i class="far fa-2x fa-eye"></i>
+          </router-link>
         </div>
       </div>
     </div>
@@ -19,17 +21,11 @@
 </template>
 
 <script>
-import router from "../../router/index";
 
 export default {
   name: "FlashcardSetCard",
   props: {
     flashcardSet: Object
-  },
-  methods: {
-    toCardSet(){
-      router.push({ name: "flashcard_set", params: { id: this.flashcardSet.ref.id, setname: this.flashcardSet.name, ref: this.flashcardSet.ref }})
-    }
   }
 };
 </script>

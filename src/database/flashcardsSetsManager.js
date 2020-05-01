@@ -17,6 +17,15 @@ var flashcardsSetsManager = {
         });
         callback(sets);
       });
+  },
+  getSetById: (id, callback) => {
+    db()
+    .collection("flashcards_sets")
+    .doc(id)
+    .get()
+    .then(snapshot => {
+      callback(snapshot);
+    });
   }
 };
 

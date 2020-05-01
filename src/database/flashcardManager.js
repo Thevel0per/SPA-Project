@@ -20,7 +20,20 @@ var flashcardManager = {
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
+  },
+  updateFlashcard: (id, word, translated_word) => {
+    db().collection("flashcards").doc(id).set({
+      word: word,
+      translated_word: translated_word
+  }, {merge: true})
+  .then(function() {
+      console.log("Document successfully updated!");
+  })
+  .catch(function(error) {
+      console.error("Error updating document: ", error);
+  });
   }
+  
 };
 
 export default flashcardManager;

@@ -22,27 +22,28 @@
         </div>
         </div>
         <div class="row" v-for="(card, index) in flashcards" :key="index">
-        <flashcard v-on:deleteflashcard="deleteEvent()" :flashcard="card" :edit="edit" />
+        <flashcard v-on:updateset="updateEvent()" :flashcard="card" :edit_set="edit_set" />
         </div>
-        <div class="row" v-if="edit">
+        <div class="row" v-if="edit_set">
           <div class="flashcard-set card bg-dark">
             <div class="card-body text-light">
               <div class="row justify-content-center">
+                Add flashcard: 
+              </div><br>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Word"
                   v-model="word"
                 />  
-              </div><br>
-              <div class="row justify-content-center">
+              <br>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Translated word"
                   v-model="translated_word"
                 />  
-              </div><br>
+              <br>
               <div class="row justify-content-center">
                 <button @click="addFlashcard()">
                   <i class="fas fa-2x fa-plus"></i>
@@ -69,13 +70,13 @@ export default {
       flashcards: [],
       word: '',
       translated_word: '',
-      edit: false,
+      edit_set: false,
       setname: ''
     };
   },
   methods:{
     addFlashcard(){
-      this.$root.db.flashcards.getSetById(this.$route.params.id ,set => {   
+      this.$root.db.flashcardsSets.getSetById(this.$route.params.id ,set => {   
         this.$root.db.flashcard.setNewFlashcard(set.ref, this.word, this.translated_word); 
         this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
           this.flashcards = i;
@@ -83,11 +84,11 @@ export default {
       });
     },
     changeEdit(){
-      if(this.edit == false) this.edit = true;
-      else this.edit = false;
+      if(this.edit_set == false) this.edit_set = true;
+      else this.edit_set = false;
     },
-    deleteEvent(){
-      this.$root.db.flashcards.getSetById(this.$route.params.id ,set => {   
+    updateEvent(){
+      this.$root.db.flashcardsSets.getSetById(this.$route.params.id ,set => {   
         this.setname = set.data().name; 
         this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
           this.flashcards = i;
@@ -96,7 +97,7 @@ export default {
     }
   },
   mounted: function() {
-    this.$root.db.flashcards.getSetById(this.$route.params.id ,set => {   
+    this.$root.db.flashcardsSets.getSetById(this.$route.params.id ,set => {   
       this.setname = set.data().name; 
       this.$root.db.flashcards.getFlashcardsForSet(set.ref ,i => {
         this.flashcards = i;
