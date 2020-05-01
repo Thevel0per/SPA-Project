@@ -36,6 +36,15 @@
                 <button v-on:click="login" type="submit" class="btn btn-outline-success w-25">Login</button>
               </div>
             </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <button
+                  v-on:click="loginWithProvider"
+                  type="submit"
+                  class="btn btn-outline-success w-25"
+                >Login with google</button>
+              </div>
+            </div>
           </form>
           <div class="login-form-link">
             <router-link to="/register">You don't have an account yet? Register Now!</router-link>
@@ -50,7 +59,9 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import UserHandler from "../database/userHandler";
+import Providers from "../database/Providers.js";
+
 export default {
   name: "login",
   data: function() {
@@ -62,15 +73,11 @@ export default {
   methods: {
     login(e) {
       e.preventDefault();
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.$router.replace("/flashcard_sets");
-        })
-        .catch(err => {
-          alert(err.message);
-        });
+      UserHandler.login(this.email, this.password, this.$router);
+    },
+    loginWithProvider(e) {
+      e.preventDefault();
+      UserHandler.loginWithProvider(Providers.google, this.$router);
     }
   }
 };
