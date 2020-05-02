@@ -1,9 +1,8 @@
-import * as firebase from 'firebase/app'
-import 'firebase/auth'
-
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const Providers = {
-    'google': new firebase.auth.GoogleAuthProvider(),
-}
+  google: new firebase.auth.GoogleAuthProvider()
+};
 
-export default Providers
+export default Providers;
