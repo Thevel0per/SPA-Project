@@ -7,14 +7,14 @@
           <form class="sets-search-form">
             <div class="w-75 row mx-auto">
               <input
-                class="form-control col-sm-12 col-md-9 w-75 mx-auto"
+                class="form-control col-sm-12 col-md-8 w-75 mx-auto"
                 type="text"
                 placeholder="Search"
                 v-model="search"
               />
               <input
                 v-on:click="showSearch"
-                class="btn btn-outline-success my-2 my-sm-0 col-sm-12 offset-md-1 col-md-2"
+                class="btn btn-outline-success my-2 col-sm-12 offset-md-1 col-md-3"
                 type="submit"
                 value="Search"
               />
@@ -66,3 +66,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+form input {
+  margin: 10px 0;
+}
+</style>
