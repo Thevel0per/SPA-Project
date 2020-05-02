@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import database from "./database";
 import axios from "axios";
+import "./registerServiceWorker";
+import "./registerServiceWorker";
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
