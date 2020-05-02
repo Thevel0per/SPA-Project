@@ -9,7 +9,7 @@
           </p>
           <hr class="my-4 bg-light" />
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <router-link
                 class="btn btn-outline-success btn-lg w-100"
                 to="/login"
@@ -21,7 +21,7 @@
             <div class="col-md-1 text-center my-auto">
               OR
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <router-link
                 class="btn btn-outline-success btn-lg w-100"
                 to="/register"
