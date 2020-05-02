@@ -1,6 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand" to="/">Total Fishks</router-link>
+    <router-link class="navbar-brand" to="/" v-if="!this.$root.loggedIn">
+      Total Fishks
+    </router-link>
+    <div class="navbar-brand" v-else>Total Fishks</div>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto container">
         <div class="row justify-content-md-center">
-          <div class="col-md-1">
+          <div class="col-md-2 col-lg-2">
             <li class="nav-item active">
               <router-link
                 class="nav-link"
@@ -26,7 +29,7 @@
               >
             </li>
           </div>
-          <div class="col-md-1">
+          <div class="col-md-2 col-lg-2">
             <li class="nav-item dropdown active">
               <a
                 class="nav-link dropdown-toggle"
