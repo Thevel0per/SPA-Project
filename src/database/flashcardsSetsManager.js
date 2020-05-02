@@ -59,6 +59,27 @@ var flashcardsSetsManager = {
       .then(() => {
         callback();
       });
+  },
+  getFilteredSearch: (callback, search) => {
+    console.log(search)
+    db()
+      .collection("flashcards_sets")
+      .get()
+      .then(snapshot => {
+
+        let sets = [];
+        snapshot.forEach(doc => {
+          let set = doc.data();
+          set.ref = doc.ref;
+          set.user.get().then(u => {
+            set.user = u.data();
+            set.userId = u.ref.id;
+          });
+          sets.push(set);
+        });
+        sets = sets.filter(el => el.name.toUpperCase().includes(search.toUpperCase()));
+        callback(sets);
+      });
   }
 };
 

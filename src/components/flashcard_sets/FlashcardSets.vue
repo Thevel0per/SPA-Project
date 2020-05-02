@@ -3,36 +3,47 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="row">
-        <SearchBar />
+        <div class="w-100">
+          <form class="sets-search-form">
+            <div class="w-75 row mx-auto">
+              <input
+                class="form-control col-sm-12 col-md-9 w-75 mx-auto"
+                type="text"
+                placeholder="Search"
+                v-model="search"
+              />
+              <input
+                v-on:click="showSearch"
+                class="btn btn-outline-success my-2 my-sm-0 col-sm-12 offset-md-1 col-md-2"
+                type="submit"
+                value="Search"
+              />
+            </div>
+          </form>
+        </div>
       </div>
       <div class="row" v-for="(set, index) in flashcardSets" :key="index">
         <FlashcardSetCard :flashcardSet="set" @set-destroyed="updateSetsList" />
       </div>
       <div class="row">
-        <router-link
-          to="/flashcard_sets/new"
-          class="mx-auto btn btn-outline-success w-50"
-        >
-          New Set
-        </router-link>
+        <router-link to="/flashcard_sets/new" class="mx-auto btn btn-outline-success w-50">New Set</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SearchBar from "../shared/SearchBar.vue";
 import FlashcardSetCard from "../shared/FlashcardSetCard.vue";
 
 export default {
   name: "FlashcardSets",
   components: {
-    SearchBar,
     FlashcardSetCard
   },
   data() {
     return {
-      flashcardSets: []
+      flashcardSets: [],
+      search: ""
     };
   },
   mounted: function() {
@@ -45,6 +56,12 @@ export default {
       this.$root.db.flashcardsSets.getAllSets(u => {
         this.flashcardSets = u;
       });
+    },
+    showSearch(e) {
+      e.preventDefault();
+      this.$root.db.flashcardsSets.getFilteredSearch(u => {
+        this.flashcardSets = u;
+      }, this.search);
     }
   }
 };
