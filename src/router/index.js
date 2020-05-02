@@ -6,9 +6,11 @@ import FlashcardSets from "../components/flashcard_sets/FlashcardSets.vue";
 import FlashcardSetForm from "../components/flashcard_sets/FlashcardSetForm.vue";
 import LearnFlashcardSet from "../components/flashcard_sets/LearnFlashcardSet.vue";
 import UserPanel from "../components/user_panel/UserPanel.vue";
+import ChangePhoto from "../components/user_panel/ChangePhoto.vue";
 import RootComponent from "../components/RootComponent.vue";
 import FlashcardSet from "../components/flashcard_sets/FlashcardSet.vue";
 import Quiz from "../components/flashcard_sets/Quiz.vue";
+
 
 Vue.use(VueRouter);
 
@@ -41,7 +43,9 @@ const routes = [
     name: "quiz_path",
     path: "/flashcard_sets/quiz/:set_id",
     component: Quiz
-  }
+  },
+
+  { path: "/change_photo", component: ChangePhoto }
 ];
 
 const router = new VueRouter({
