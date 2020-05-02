@@ -62,6 +62,14 @@
                   Register
                 </button>
               </div>
+              <div class="col-sm-12">
+                <button
+                  v-on:click="getRandomUserName"
+                  class="btn btn-outline-success w-50"
+                >
+                  Generate Username
+                </button>
+              </div>
             </div>
           </form>
           <div class="register-form-links">
@@ -107,6 +115,13 @@ export default {
     loginWithProvider(e) {
       e.preventDefault();
       UserHandler.loginWithProvider(this, Providers.google, this.$router);
+    },
+    getRandomUserName() {
+      fetch("https://randomuser.me/api/")
+        .then(response => response.json())
+        .then(user => {
+          this.username = user.results[0].login.username;
+        });
     }
   }
 };
@@ -115,5 +130,9 @@ export default {
 <style scoped>
 .register-form-links {
   color: white;
+}
+
+button {
+  margin: 5px 0;
 }
 </style>
