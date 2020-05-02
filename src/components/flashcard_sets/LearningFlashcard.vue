@@ -5,9 +5,7 @@
         <div class="prev-button col-md-3 my-auto" @click="prevCard">
           <i class="fas fa-3x fa-arrow-left"></i>
         </div>
-        <div class="word col-md-6 my-auto" @click="reverseCard">
-          {{ this.showedWord }}
-        </div>
+        <div class="word col-md-6 my-auto" @click="reverseCard">{{ this.showedWord }}</div>
         <div class="next-button col-md-3 my-auto" @click="nextCard">
           <i class="fas fa-3x fa-arrow-right"></i>
         </div>
