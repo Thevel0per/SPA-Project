@@ -117,6 +117,7 @@ export default {
       UserHandler.loginWithProvider(this, Providers.google, this.$router);
     },
     getRandomUserName() {
+      this.username = "";
       fetch("https://randomuser.me/api/")
         .then(response => response.json())
         .then(user => {
