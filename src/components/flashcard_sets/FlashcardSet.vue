@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-md-3">
+    <div class="col-md-8 col-lg-6">
       <div class="row">
         <div class="flashcard-set card bg-dark">
           <div class="card-body text-light">
