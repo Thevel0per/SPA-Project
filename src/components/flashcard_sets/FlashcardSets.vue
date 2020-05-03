@@ -20,6 +20,12 @@
               />
             </div>
           </form>
+          <button
+            class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 btn btn-outline-success"
+            @click="updateSetsList"
+          >
+            Show All Sets
+          </button>
         </div>
       </div>
       <div class="row" v-for="(set, index) in flashcardSets" :key="index">
