@@ -107,6 +107,7 @@ export default {
       e.preventDefault();
       UserHandler.logout(this.$router);
       this.$root.loggedUser = null;
+      this.$router.replace("/");
     }
   }
 };
