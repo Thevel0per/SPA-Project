@@ -24,7 +24,6 @@
               <router-link
                 class="nav-link"
                 to="/flashcard_sets"
-                v-if="!loggedIn"
                 >Flashcards</router-link
               >
             </li>
@@ -77,17 +76,6 @@
               </div>
             </li>
           </div>
-          <div class="col-md-1">
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="/flashcard_sets/new"
-                v-if="loggedIn"
-              >
-                New Flashcards Set
-              </router-link>
-            </li>
-          </div>
         </div>
       </ul>
     </div>
@@ -113,7 +101,6 @@ export default {
 <style scoped>
 div.row {
   width: 100%;
-  margin-left: 4%;
 }
 
 div.col-md-1 {
