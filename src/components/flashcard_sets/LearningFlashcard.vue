@@ -13,6 +13,17 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <router-link
+        :to="{
+          name: 'flashcard_set',
+          params: { id: this.$route.params.set_id }
+        }"
+        class="btn btn-outline-success"
+      >
+        Go back
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -74,5 +85,9 @@ div.word {
   div.word {
     font-size: 2em;
   }
+}
+
+a {
+  margin: 10px 0;
 }
 </style>

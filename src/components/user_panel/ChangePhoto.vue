@@ -11,7 +11,7 @@
               </div>
               <div>
                 <p>
-                  Progress: {{uploadValue.toFixed()+"%"}}
+                  Progress: {{ uploadValue.toFixed() + "%" }}
                   <progress
                     id="progress"
                     :value="uploadValue"
@@ -19,14 +19,16 @@
                   ></progress>
                 </p>
               </div>
-              <div v-if="imageData!=null">
+              <div v-if="imageData != null">
                 <img class="preview" :src="picture" />
                 <br />
                 <div class="form-part col-sm-12 col-md-3 center">
                   <button
                     class="btn btn-outline-success w-100 btn-change-photo"
                     @click="onUpload"
-                  >Upload</button>
+                  >
+                    Upload
+                  </button>
                 </div>
                 <br />
               </div>
@@ -36,7 +38,9 @@
                   to="/userPanel"
                   tag="button"
                   class="btn btn-outline-success w-100 btn-change-photo"
-                >go back</router-link>
+                >
+                  Go back
+                </router-link>
               </div>
             </div>
           </form>
