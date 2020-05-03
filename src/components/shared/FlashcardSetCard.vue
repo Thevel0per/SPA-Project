@@ -65,6 +65,14 @@ export default {
         this.owner = this.$root.loggedUser.uid == userId;
       }
     );
+  },
+  updated: function() {
+    this.$root.db.users.getFlashCardSetOwnerId(
+      this.flashcardSet.ref.id,
+      userId => {
+        this.owner = this.$root.loggedUser.uid == userId;
+      }
+    );
   }
 };
 </script>
