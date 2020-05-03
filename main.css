@@ -1,0 +1,47 @@
+@media screen and (max-width: 767px) {
+  div.responsive-form {
+    width: 100% !important;
+  }
+
+  div.form-group label {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  div.responsive-form {
+    width: 75% !important;
+  }
+}
+
+.responsive-form {
+  padding: 40px 0;
+}
+
+.login-form-link {
+  margin-bottom: 10px;
+}
+
+.flashcards-sets-content {
+  margin-top: 2%;
+}
+
+.flashcard-set {
+  border-radius: 5px;
+  width: 75%;
+  justify-content: center;
+  margin: 2% auto;
+}
+
+.navigation-container {
+  padding: 3% 1%;
+}
+.g-signin-button {
+
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+}
