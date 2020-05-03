@@ -1,7 +1,6 @@
 <template>
   <div class="row flashcards-sets-content">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
       <div class="row">
         <div class="w-100">
           <form class="sets-search-form">
@@ -20,12 +19,14 @@
               />
             </div>
           </form>
-          <button
-            class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 btn btn-outline-success"
-            @click="updateSetsList"
-          >
-            Show All Sets
-          </button>
+          <div class="row w-75 mx-auto">
+            <button
+              class="col-sm-12 col-md-6 offset-md-3 btn btn-outline-success"
+              @click="updateSetsList"
+            >
+              Show All Sets
+            </button>
+          </div>
         </div>
       </div>
       <div class="row" v-for="(set, index) in flashcardSets" :key="index">
