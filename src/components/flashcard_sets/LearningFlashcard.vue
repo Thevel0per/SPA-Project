@@ -2,12 +2,14 @@
   <div class="flashcard-set card bg-dark">
     <div class="flashcard card-body text-light text-center h-100">
       <div class="row justify-content-center h-100">
-        <div class="prev-button col-md-3 my-auto" @click="prevCard">
-          <i class="fas fa-3x fa-arrow-left"></i>
+        <div class="prev-button col-md-2 my-auto text-center" @click="prevCard">
+          <i class="fas fa-2x fa-arrow-left"></i>
         </div>
-        <div class="word col-md-6 my-auto" @click="reverseCard">{{ this.showedWord }}</div>
-        <div class="next-button col-md-3 my-auto" @click="nextCard">
-          <i class="fas fa-3x fa-arrow-right"></i>
+        <div class="word col-md-8 my-auto" @click="reverseCard">
+          {{ this.showedWord }}
+        </div>
+        <div class="next-button col-md-2 my-auto text-center" @click="nextCard">
+          <i class="fas fa-2x fa-arrow-right"></i>
         </div>
       </div>
     </div>
@@ -47,18 +49,11 @@ export default {
 <style scoped>
 div.card {
   height: 250px;
+  width: 100%;
 }
 
 div.word {
   font-size: 3em;
-}
-
-button {
-  background: none;
-  color: white;
-  border: none;
-  margin: 0 5px;
-  width: 50px;
 }
 
 .next-button:hover {
@@ -67,5 +62,17 @@ button {
 
 .prev-button:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  div.word {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  div.word {
+    font-size: 2em;
+  }
 }
 </style>

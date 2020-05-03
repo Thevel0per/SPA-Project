@@ -26,7 +26,12 @@
         <FlashcardSetCard :flashcardSet="set" @set-destroyed="updateSetsList" />
       </div>
       <div class="row">
-        <router-link to="/flashcard_sets/new" class="mx-auto btn btn-outline-success w-50">New Set</router-link>
+        <router-link
+          to="/flashcard_sets/new"
+          class="mx-auto btn btn-outline-success w-50"
+        >
+          New Set
+        </router-link>
       </div>
     </div>
   </div>
