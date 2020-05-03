@@ -45,7 +45,7 @@ export default class UserHandler {
             })
             .then(() => {
               component.$root.loggedUser = currUser;
-              UserHandler.login(email, password, router);
+              UserHandler.login(component, email, password, router);
             });
         });
       })
@@ -58,7 +58,9 @@ export default class UserHandler {
     AUTH()
       .signInWithEmailAndPassword(email, password)
       .then(u => {
-        component.$root.loggedUser = u.user;
+        if (component) {
+          component.$root.loggedUser = u.user;
+        }
         router.replace("/flashcard_sets");
       })
       .catch(error => {
