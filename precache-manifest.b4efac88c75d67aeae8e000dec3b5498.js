@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c984773f1d7bd05ea4aa",
-    "url": "/SPA-Project/css/app.d966b1c4.css"
+    "revision": "81f9f685e5a40db9b1b6",
+    "url": "/SPA-Project/css/app.a24b3795.css"
   },
   {
-    "revision": "5ea20cdc025eb3937cc6fdb4040b755c",
+    "revision": "4a3982127040ae56519078e85395168e",
     "url": "/SPA-Project/index.html"
   },
   {
-    "revision": "c984773f1d7bd05ea4aa",
-    "url": "/SPA-Project/js/app.8e6fe19b.js"
+    "revision": "81f9f685e5a40db9b1b6",
+    "url": "/SPA-Project/js/app.5b48ba25.js"
   },
   {
     "revision": "aa5c64c130ab72dc667e",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SPA-Project/main.css"
   },
   {
-    "revision": "7c976c57dc440c8f9165445e915e86b4",
+    "revision": "373259ed330b6732b4067633f9bb3be7",
     "url": "/SPA-Project/manifest.json"
   },
   {

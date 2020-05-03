@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/SPA-Project/precache-manifest.77a36b4cec37e30425c09385d3f43a4e.js"
+  "/SPA-Project/precache-manifest.b4efac88c75d67aeae8e000dec3b5498.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "fishks_app"});
