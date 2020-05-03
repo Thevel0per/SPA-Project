@@ -115,6 +115,7 @@ export default {
 <style scoped>
 div.row {
   width: 100%;
+  margin-left: 4%;
 }
 
 div.col-md-1 {

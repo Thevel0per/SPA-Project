@@ -25,14 +25,14 @@
               <div class="col-sm-12">
                 <button
                   @click="createNewSet"
-                  class="btn btn-outline-success w-25"
+                  class="btn btn-outline-success w-50"
                   v-if="!edit"
                 >
                   Create Set
                 </button>
                 <button
                   @click="createNewSet"
-                  class="btn btn-outline-success w-25"
+                  class="btn btn-outline-success w-50"
                   v-else
                 >
                   Update Set
