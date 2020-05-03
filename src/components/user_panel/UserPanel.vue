@@ -144,17 +144,14 @@ export default {
   },
   mounted: function() {
     let thisRef = this;
-    let callback = function() {
-      const storageRef = firebase.storage();
+    const storageRef = firebase.storage();
 
-      storageRef
-        .ref(`${this.$root.loggedUser.uid}/userPhoto`)
-        .getDownloadURL()
-        .then(function(url) {
-          thisRef.picture = url;
-        });
-    }.bind(this);
-    setTimeout(callback, 1000);
+    storageRef
+      .ref(`${this.$root.loggedUser.uid}/userPhoto`)
+      .getDownloadURL()
+      .then(function(url) {
+        thisRef.picture = url;
+      });
   }
 };
 </script>

@@ -11,7 +11,9 @@ export default class UserHandler {
       if (!user) {
         console.log("wylogowany");
       }
-      component.$root.loggedUser = user;
+      if (!component.$root.loggedUser) {
+        component.$root.loggedUser = user;
+      }
       return;
     });
   }
