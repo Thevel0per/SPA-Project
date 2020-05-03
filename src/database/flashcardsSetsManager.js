@@ -61,7 +61,6 @@ var flashcardsSetsManager = {
       });
   },
   getFilteredSearch: (callback, search) => {
-    console.log(search)
     db()
       .collection("flashcards_sets")
       .get()

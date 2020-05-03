@@ -69,7 +69,6 @@ var flashcardsManager = {
 
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState === this.DONE) {
-        console.log("response:", this.responseText);
         callback(this.responseText);
       }
     });

@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand" to="/" v-if="!this.$root.loggedIn">
+    <router-link class="navbar-brand" to="/" v-if="!this.$root.loggedUser">
       Total Fishks
     </router-link>
     <div class="navbar-brand" v-else>Total Fishks</div>
@@ -98,9 +98,6 @@
 import UserHandler from "../database/userHandler";
 
 export default {
-  props: {
-    loggedIn: Boolean
-  },
   name: "HeaderMenu",
   methods: {
     logout(e) {

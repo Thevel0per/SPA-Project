@@ -70,7 +70,6 @@ export default {
       } else {
         this.$root.db.users.getUserById(this.$root.loggedUser.uid, user => {
           this.$root.db.flashcardsSets.createSet(this.set_name, user, () => {
-            console.log(user);
             this.$router.replace("/flashcard_sets");
           });
         });

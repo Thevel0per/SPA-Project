@@ -49,19 +49,19 @@ export default {
   },
   methods: {
     destroySet: function() {
-      confirm("Are you sure?");
-      this.$root.db.flashcardsSets.destroySet(
-        this.flashcardSet.ref.id,
-        () => {}
-      );
-      this.$emit("set-destroyed");
+      if (confirm("Are you sure?")) {
+        this.$root.db.flashcardsSets.destroySet(
+          this.flashcardSet.ref.id,
+          () => {}
+        );
+        this.$emit("set-destroyed");
+      }
     }
   },
   mounted: function() {
     this.$root.db.users.getFlashCardSetOwnerId(
       this.flashcardSet.ref.id,
       userId => {
-        console.log(userId);
         this.owner = this.$root.loggedUser.uid == userId;
       }
     );

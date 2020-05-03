@@ -144,8 +144,6 @@ export default class UserHandler {
   }
 
   static changePassword(password, passwordRepeat, router) {
-    console.log(password);
-    console.log(passwordRepeat);
     const user = AUTH().currentUser;
     if (!user) return;
     const result = UserHandler.validateRegistration(password, passwordRepeat);

@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="h-100">
-    <HeaderMenu :loggedIn="loggedIn" />
+    <HeaderMenu />
     <router-view></router-view>
   </div>
 </template>
@@ -11,11 +11,6 @@ import UserHandler from "./database/userHandler";
 
 export default {
   name: "App",
-  data() {
-    return {
-      loggedIn: false
-    };
-  },
   created: function() {
     UserHandler.addListener(this);
   },

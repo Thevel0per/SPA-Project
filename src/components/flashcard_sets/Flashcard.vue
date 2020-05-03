@@ -143,7 +143,6 @@ export default {
       }
     },
     updateFlashcard() {
-      console.log("update");
       this.translate = false;
       this.$root.db.flashcards.updateFlashcard(
         this.flashcard.id,
@@ -160,7 +159,6 @@ export default {
     },
     changeLanguage(language) {
       this.language = language;
-      console.log("aaa");
     },
     changeTargetLanguage(target_language) {
       this.target_language = target_language;
@@ -173,7 +171,6 @@ export default {
           this.target_language.code,
           this.word,
           translated_word => {
-            console.log("abc", JSON.parse(translated_word).outputs[0].output);
             this.translated_word = JSON.parse(
               translated_word
             ).outputs[0].output;
@@ -185,10 +182,6 @@ export default {
           "en",
           this.word,
           translated_en_word => {
-            console.log(
-              "abc",
-              JSON.parse(translated_en_word).outputs[0].output
-            );
             this.translated_word = JSON.parse(
               translated_en_word
             ).outputs[0].output;
@@ -198,10 +191,6 @@ export default {
               this.target_language.code,
               JSON.parse(translated_en_word).outputs[0].output,
               translated_word => {
-                console.log(
-                  "abc",
-                  JSON.parse(translated_word).outputs[0].output
-                );
                 this.translated_word = JSON.parse(
                   translated_word
                 ).outputs[0].output;
